@@ -12,7 +12,7 @@ BasicToken Smart Contract provides basic tokens functionalities like send, recei
 - Having reEntrancyGuard modifier to prevent Re-entrancy attacks.
 - Having Mint,Burn,Sent events to listen those events by the subscribers from the blockchain.
 
-Note: BasicToken (BST) is not an ERC20 or BEP20 Token. Because this token is not created in accordance with ERC20/BEP20 Standards.
+Note: BasicToken (BST) is not an ERC20 or BEP20 Token. Because this token is not created in accordance with EIP-20/BEP-20 - Token Standard.
 
 ## Deployed on Ethereum/Binance Test Networks
 - Rinkeby - https://rinkeby.etherscan.io/tx/0x37a10299f49a73433e8dcda0c90448b3e10d97029817a8d643c4be0dbb486154
