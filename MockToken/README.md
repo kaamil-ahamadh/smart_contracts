@@ -12,7 +12,7 @@ Mock Token Smart Contract is an ERC20 Token which provides basic ERC20 tokens fu
 - Having burning of tokens option by any user who have actual balance of MTKN tokens.
 - Having Transfer,Approval and Burn events to listen those events by the subscribers from the blockchain.
 
-Note: Mock Token (MTKN) is an ERC20 Token. Because this token is created in accordance with ERC20 Standards.
+Note: Mock Token (MTKN) is an ERC20 Token. Because this token is created in accordance with EIP-20 - Token Standard.
 
 ## Deployed on Ethereum Test Network
 - Rinkeby - https://rinkeby.etherscan.io/tx/0x687445d822bf54931d41c76e2af14d59730d8bac7f604f125b692f909dcc6fa0
