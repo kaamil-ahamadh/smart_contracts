@@ -7,9 +7,6 @@ contract Bank {
     //admin
     address admin;
 
-    address public testAddress;
-    bytes32 public testBytes;
-
     //Whitelisted Tokens Registry
     bytes32[] _whiteListedSymbols;
     mapping(bytes32 => address) _whitelistedTokens;
