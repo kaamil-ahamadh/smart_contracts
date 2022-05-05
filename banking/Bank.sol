@@ -1,6 +1,7 @@
 //SPDX-License-Identifier: MIT
 pragma solidity 0.8.12;
 
+//Importing Openzeppelin's IERC20 interface for interacting with Mock ERC20 tokens
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/IERC20.sol";
 
 contract Bank {
@@ -14,36 +15,49 @@ contract Bank {
     //User Balance of whitelisted Tokens
     mapping(address => mapping(bytes32 => uint)) public balanceOf;
 
-
+    //Initialization of admin to deployer of this contract
     constructor() {
         admin = msg.sender;
     }
 
+    //Access Control
     modifier onlyAdmin() {
         require(msg.sender == admin, "Only Admin can call this function");
         _;
     }
 
-    //Add whitelistTokens by admin
+    /**
+     * @notice Whitelist tokens for enabling deposit into this contract
+     */
     function whitelistToken(bytes32 _symbol, address _tokenAddress) external onlyAdmin {
         _whiteListedSymbols.push(_symbol);
         _whitelistedTokens[_symbol] = _tokenAddress;
     }
 
+    /**
+     * @notice List out all whitelisted token symbols
+     */
     function getWhiteListedSymbols() external view returns(bytes32[] memory) {
         return _whiteListedSymbols;
     }
-
+    
+    /**
+     * @notice Get whitelisted token address from whitelisted token symbol
+     */
     function getWhiteListedTokenAddress(bytes32 _symbol) external view returns(address) {
         return _whitelistedTokens[_symbol];
     }
 
-    //Deposit Ether
+    /**
+     * @notice Deposit Ether into this contract directly from a contract address
+     */
     receive() external payable {
         balanceOf[msg.sender]['ETH'] += msg.value;
     }
 
-    //Withdraw Ether
+    /**
+     * @notice Withdraw already deposited ether upto the maximum amount of his balance
+     */
     function withdrawEther(uint _amount) external {
         require(balanceOf[msg.sender]['ETH'] >= _amount, "Insufficient ether");
 
@@ -52,14 +66,18 @@ contract Bank {
         require(success, "Failed to withdraw ether");
     }
 
-    //Deposit ERC20 Tokens
+    /**
+     * @notice Deposit whitelisted ERC20 tokens into this contract
+     */
     function depositERC20Token(bytes32 _symbol, uint _amount) external {
         balanceOf[msg.sender][_symbol] += _amount;
         IERC20(_whitelistedTokens[_symbol]).transferFrom(msg.sender, address(this), _amount);
     }
 
 
-    //Withdraw ERC20 Tokens
+    /**
+     * @notice Withdraw already deposited ERC20 tokens upto the maximum amount of his balance
+     */
     function withdrawERC20Token(bytes32 _symbol, uint _amount) external {
         require(balanceOf[msg.sender][_symbol] >= _amount, "Insufficient Tokens");
 
