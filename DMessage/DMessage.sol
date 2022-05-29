@@ -28,6 +28,7 @@ contract DMessage {
 
     //Send Message
     function sendMessage(string memory _message) external {
+        require(bytes(_message).length > 0, "_message can't be empty");
         messages[messageCount] = Message(messageCount,msg.sender,_message,block.timestamp);
 
         emit MessageSent(messageCount,msg.sender,_message,block.timestamp);
