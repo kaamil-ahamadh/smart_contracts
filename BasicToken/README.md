@@ -14,7 +14,7 @@ BasicToken Smart Contract provides basic tokens functionalities like send, recei
 
 Note: BasicToken (BST) is not an ERC20 or BEP20 Token. Because this token is not created in accordance with EIP-20/BEP-20 - Token Standard.
 
-## Deployed on Ethereum/Binance Test Networks
+## Deployed on Ethereum/BSC/Avax/Polygon/Fantom Test Networks
 - Rinkeby - https://rinkeby.etherscan.io/tx/0x37a10299f49a73433e8dcda0c90448b3e10d97029817a8d643c4be0dbb486154
 - Ropsten - https://ropsten.etherscan.io/tx/0xa431e5a712408fa8c26fb40a99f38e7923529517ec9375a4accf45b4b4de6dcd
 - BSC - https://testnet.bscscan.com/tx/0x472905f6c85bdf5e9dc9b0bc91f251800d99d2bd646f02f67857adc1ca4dcd2d
